@@ -1,12 +1,10 @@
 const startBtn = document.querySelector('button[data-start]');
 const stopBtn = document.querySelector('button[data-stop]');
 const body = document.querySelector('body');
-console.dir(startBtn);
 
 let timerId = null;
-stopBtn.disabled = true;
 
-// stopBtn.setAttribute('disabled', true);
+stopBtn.disabled = true;
 
 startBtn.addEventListener('click', onStartClick);
 stopBtn.addEventListener('click', onStopClick);
@@ -28,6 +26,3 @@ function onStopClick(evt) {
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
-
-console.dir(body);
-// body.style.backgroundColor = 'green';
