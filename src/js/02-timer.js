@@ -26,6 +26,7 @@ const options = {
   onClose(selectedDates) {
     if (selectedDates[0] < new Date()) {
       Notify.failure('Please choose a date in the future');
+      btn.disabled = true;
     } else {
       btn.disabled = false;
       selectedTime = selectedDates[0];
