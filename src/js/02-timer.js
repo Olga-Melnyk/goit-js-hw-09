@@ -4,10 +4,10 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const input = document.querySelector('#datetime-picker');
 const btn = document.querySelector('button[data-start]');
-const days = document.querySelector('span[data-days]');
-const hours = document.querySelector('span[data-hours]');
-const minutes = document.querySelector('span[data-minutes]');
-const seconds = document.querySelector('span[data-seconds]');
+const daysTimer = document.querySelector('span[data-days]');
+const hoursTimer = document.querySelector('span[data-hours]');
+const minutesTimer = document.querySelector('span[data-minutes]');
+const secondsTimer = document.querySelector('span[data-seconds]');
 
 btn.addEventListener('click', () => {
   timer.start();
@@ -49,18 +49,19 @@ class Timer {
       const startTime = Date.now();
       const deltaTime = selectedTime - startTime;
       const time = convertMs(deltaTime);
-      console.log(time);
+      // console.log(time);
       this.update(time);
       if (deltaTime <= 0) {
         this.stop();
       }
+      btn.disabled = true;
     }, 1000);
   }
   update({ days, hours, minutes, seconds }) {
-    days.textContent = days;
-    hours.textContent = hours;
-    minutes.textContent = minutes;
-    seconds.textContent = seconds;
+    daysTimer.textContent = days;
+    hoursTimer.textContent = hours;
+    minutesTimer.textContent = minutes;
+    secondsTimer.textContent = seconds;
   }
   stop() {
     clearInterval(this.intervalId);
