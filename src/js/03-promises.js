@@ -4,6 +4,18 @@ const form = document.querySelector('.form');
 
 form.addEventListener('submit', onSubmit);
 
+function createPromise(position, delay) {
+  const shouldResolve = Math.random() > 0.3;
+  const object = { position, delay };
+  return new Promise((resolve, reject) => {
+    if (shouldResolve) {
+      resolve(object);
+    } else {
+      reject(object);
+    }
+  });
+}
+
 function onSubmit(e) {
   e.preventDefault();
 
@@ -26,23 +38,3 @@ function onSubmit(e) {
     delay += step;
   }
 }
-
-function createPromise(position, delay) {
-  const shouldResolve = Math.random() > 0.3;
-  const object = { position, delay };
-  return new Promise((resolve, reject) => {
-    if (shouldResolve) {
-      resolve(object);
-    } else {
-      reject(object);
-    }
-  });
-}
-
-// createPromise(2, 1500)
-//   .then(({ position, delay }) => {
-//     console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-//   })
-//   .catch(({ position, delay }) => {
-//     console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-//   });
